@@ -23,4 +23,5 @@ This repository demonstrates a technique to bypass **AMSI (Antimalware Scan Inte
 - **Obfuscation**: The use of `IEX` and remote loading adds an additional layer of obfuscation.
 
 **Disclaimer**: This technique is for educational purposes only and should be used responsibly in authorized environments.
+
 **Reference**: https://github.com/V-i-x-x/AMSI-BYPASS
