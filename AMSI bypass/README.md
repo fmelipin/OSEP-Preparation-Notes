@@ -5,7 +5,7 @@ This repository demonstrates a technique to bypass **AMSI (Antimalware Scan Inte
 #### Steps Performed:
 1. **Code Development**:
    - Created a PowerShell script designed to bypass AMSI.
-   - Split the script into three separate files: `hello.ps1`, `hello2.ps1`, and `hello3.ps1`.
+   - Split the script into three separate files: `stage_1.ps1`, `stage_2.ps1`, and `stage_3.ps1`.
 
 2. **Script Execution**:
    - Used the `IEX` (Invoke-Expression) command to download and execute each script in memory:
@@ -23,3 +23,4 @@ This repository demonstrates a technique to bypass **AMSI (Antimalware Scan Inte
 - **Obfuscation**: The use of `IEX` and remote loading adds an additional layer of obfuscation.
 
 **Disclaimer**: This technique is for educational purposes only and should be used responsibly in authorized environments.
+**Reference**: https://github.com/V-i-x-x/AMSI-BYPASS
