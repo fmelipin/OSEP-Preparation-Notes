@@ -34,7 +34,7 @@ namespace EncryptVBA
             hex.Length -= 2;
             hex.Append(")");
 
-            Console.WriteLine("XORed VBA Payload (Key: 0xFA):");
+            Console.WriteLine("XORed VBA Payload (Key: 0xFA and Decimal: 250):");
             Console.WriteLine(hex.ToString());
         }
     }
