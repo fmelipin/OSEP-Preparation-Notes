@@ -1,7 +1,7 @@
 # VBA Payload Encryption and Execution
 
 ## Overview
-This project demonstrates how to encrypt a shellcode (revshell) payload for execution within a Microsoft Word VBA macro. The encryption process enhances evasion techniques to bypass security solutions by encoding the payload before execution.
+This project demonstrates how to encrypt a shellcode (revshell) payload for execution within a Microsoft Word VBA macro. The encryption process enhances evasion techniques to **_<u>bypass AV</u>_** by encoding the payload before execution.
 
 ## Steps
 ### 1. Generate the Shellcode
