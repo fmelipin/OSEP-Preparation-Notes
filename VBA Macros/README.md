@@ -1,4 +1,4 @@
-# VBA Payload Encryption and Execution
+# VBA Macro Runner Encoded Execution
 
 ## Overview
 This project demonstrates how to encrypt a shellcode (revshell) payload for execution within a Microsoft Word VBA macro. The encryption process enhances evasion techniques to **_<u>bypass AV</u>_** by encoding the payload before execution.
