@@ -1,3 +1,4 @@
+```markdown
 # PowerShell Reverse Shell with AMSI Bypass
 
 This repository contains a PowerShell script to establish a reverse shell connection while bypassing AMSI (Antimalware Scan Interface) to evade detection by antivirus software. The script is designed for educational purposes and penetration testing in authorized environments.
@@ -9,7 +10,8 @@ This repository contains a PowerShell script to establish a reverse shell connec
 2. [Requirements](#requirements)
 3. [Usage](#usage)
 4. [How It Works](#how-it-works)
-5. [Disclaimer](#disclaimer)
+5. [Why Linkin Park?](#why-linkin-park)
+6. [Disclaimer](#disclaimer)
 
 ---
 
@@ -75,6 +77,24 @@ Replace `<SERVER_IP>` with the IP address of your HTTP server.
 
 ---
 
+## Why Linkin Park?
+
+The variables in the `shell.ps1` script are named after members of the band **Linkin Park** as a tribute to their music and legacy. Here's the breakdown:
+- `$chester`: Chester Bennington, the iconic lead vocalist.
+- `$mike`: Mike Shinoda, the band's co-lead vocalist, rapper, and multi-instrumentalist.
+- `$shinoda`: Another nod to Mike Shinoda.
+- `$bennington`: Chester Bennington's last name.
+- `$hahn`: Joe Hahn, the band's DJ and creative director.
+- `$phoenix`: Phoenix Farrell, the bassist.
+- `$bourdon`: Rob Bourdon, the drummer.
+
+This naming convention adds a personal touch to the script while maintaining its functionality.
+
+---
+
 ## Disclaimer
 
 This project is intended for educational and authorized penetration testing purposes only. Do not use this tool for illegal or malicious activities. The author is not responsible for any misuse of this software. Always ensure you have proper authorization before using this tool in any environment.
+
+---
+```
