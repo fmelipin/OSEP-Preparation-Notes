@@ -1,4 +1,3 @@
-```markdown
 # PowerShell Reverse Shell with AMSI Bypass
 
 This repository contains a PowerShell script to establish a reverse shell connection while bypassing AMSI (Antimalware Scan Interface) to evade detection by antivirus software. The script is designed for educational purposes and penetration testing in authorized environments.
@@ -95,6 +94,3 @@ This naming convention adds a personal touch to the script while maintaining its
 ## Disclaimer
 
 This project is intended for educational and authorized penetration testing purposes only. Do not use this tool for illegal or malicious activities. The author is not responsible for any misuse of this software. Always ensure you have proper authorization before using this tool in any environment.
-
----
-```
