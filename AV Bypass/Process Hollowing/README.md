@@ -8,6 +8,7 @@ This project demonstrates a stealthy process injection technique known as **Proc
 - **Indirect syscalls**: System calls are executed through manually copied syscall stubs to evade userland API hooks.
 - **PPID Spoofing**: The spawned process impersonates a trusted parent (e.g., `explorer.exe`) to evade behavior-based detection mechanisms.
 
+### ⚠️ Remember to check the IP in the files!!
 ---
 
 ## ⚙️ How It Works
