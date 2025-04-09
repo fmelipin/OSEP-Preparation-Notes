@@ -4,6 +4,13 @@ This repository provides a **custom DLL Loader** built for **OSEP-level training
 
 ---
 
+## 📌 Based on
+
+This project is a **fork of [ShellcodeEncrypt2DLL](https://github.com/restkhz/ShellcodeEncrypt2DLL)** by [restkhz](https://github.com/restkhz), originally designed to execute AES-encrypted shellcode from DLLs.  
+The current version has been modified, cleaned, and adapted to load DLLs directly into memory for improved **evasion and compatibility** in modern red team environments.
+
+---
+
 ## 🎯 Purpose
 
 This tool was created specifically as part of preparation for the **Offensive Security Experienced Penetration Tester (OSEP)** certification.
@@ -34,3 +41,4 @@ The authors are not responsible for any misuse or illegal activity.
 ## 📂 Repository
 
 [https://github.com/fmelipin/DLL-Loader](https://github.com/fmelipin/DLL-Loader)
+
