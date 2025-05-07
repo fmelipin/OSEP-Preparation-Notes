@@ -94,7 +94,7 @@ The project is compiled using **Visual Studio**. To do so:
 
 6. The attacker receives a reverse shell connection on port 443:
    ```
-   nc -lvnp 443
+   rlwrap -cAr nc -lvnp 443
    ```
 
 ---
