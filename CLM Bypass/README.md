@@ -97,6 +97,8 @@ To confirm the payload executed correctly:
 
 3. Observe PowerShell command execution or interactive shell.
 
+4. Remember to check the IP in shell.ps1 and in the c# file.
+
 ---
 
 ## 🧠 How It Works
