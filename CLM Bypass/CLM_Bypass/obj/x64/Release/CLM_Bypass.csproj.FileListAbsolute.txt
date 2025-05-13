@@ -1,0 +1,9 @@
+C:\Users\franc\Desktop\OSEP\CLM_Bypass\CLM_Bypass\bin\x64\Release\CLM_Bypass.exe.config
+C:\Users\franc\Desktop\OSEP\CLM_Bypass\CLM_Bypass\bin\x64\Release\CLM_Bypass.exe
+C:\Users\franc\Desktop\OSEP\CLM_Bypass\CLM_Bypass\bin\x64\Release\CLM_Bypass.pdb
+C:\Users\franc\Desktop\OSEP\CLM_Bypass\CLM_Bypass\bin\x64\Release\System.Management.Automation.dll
+C:\Users\franc\Desktop\OSEP\CLM_Bypass\CLM_Bypass\obj\x64\Release\CLM_Bypass.csproj.AssemblyReference.cache
+C:\Users\franc\Desktop\OSEP\CLM_Bypass\CLM_Bypass\obj\x64\Release\CLM_Bypass.csproj.CoreCompileInputs.cache
+C:\Users\franc\Desktop\OSEP\CLM_Bypass\CLM_Bypass\obj\x64\Release\CLM_Bypass.csproj.Up2Date
+C:\Users\franc\Desktop\OSEP\CLM_Bypass\CLM_Bypass\obj\x64\Release\CLM_Bypass.exe
+C:\Users\franc\Desktop\OSEP\CLM_Bypass\CLM_Bypass\obj\x64\Release\CLM_Bypass.pdb
